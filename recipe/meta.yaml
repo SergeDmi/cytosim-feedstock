@@ -1,5 +1,5 @@
-{% set name = "cytosim" %}
-{% set version = "0.0.19" %}
+{% set name = "cytoplay" %}
+{% set version = "0.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: be8b9d7978d93c1bac0f3df172205d0bf52699b9149519800277cae8fff3b98b
+  sha256: a47c0a074a9c379f10b15a98d63b716ec8fb40881cb464e4e331e038801122a1
 build:
   skip: true  # [win]
   number: 1
@@ -16,26 +16,36 @@ build:
 
 requirements:
   build:
-    - pip
     - cmake >=3.14
     - make 
     - {{ compiler('cxx') }}
-    - {{ stdlib("c") }}
     - libblas
     - liblapack
     - pybind11
+    - freeglut
+    - xorg-libxi
+    - xorg-libxmu
+    - glew
+    
   host:
-    - pip
     - setuptools
     - python
     - libblas
     - liblapack
     - pybind11
+    - freeglut
+    - xorg-libxi
+    - xorg-libxmu
+    - glew
   run:
     - python
     - libblas
     - liblapack
     - pybind11
+    - freeglut
+    - xorg-libxi
+    - xorg-libxmu
+    - glew
 
 test:
   imports:
